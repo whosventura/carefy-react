@@ -9,12 +9,14 @@ function Register() {
         email: '',
         password: ''
     })
+
     const handleSubmit = (event) => {
         event.preventDefault()
         axios.post('http://localhost:8081/register', values)
         .then(res => console.log(res))
-        .then(err => console.log(err));
+        .catch(err => console.log(err));
     }
+
     return ( 
     <div className="d-flex justify-content-center align-items-center bg-primary vh-100">
     <div className="bg-white p-3 rounded w-25">
