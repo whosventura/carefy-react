@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import axios from "axios"
 
 function Register() { 
@@ -9,11 +9,17 @@ function Register() {
         email: '',
         password: ''
     })
-
+    const navigate = useNavigate()
     const handleSubmit = (event) => {
         event.preventDefault()
         axios.post('http://localhost:8081/register', values)
-        .then(res => console.log(res))
+        .then(res => {
+            if(res.data.Status === "Sucess"){
+                navigate('/login');
+            }else {
+                alert("Error");
+            }
+        })
         .catch(err => console.log(err));
     }
 
