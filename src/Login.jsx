@@ -14,7 +14,7 @@ function Login() {
         event.preventDefault();
         try {
           const response = await axios.post('http://localhost:8081/login', formData);
-          if (response.data.status === 'Sucesso') {
+          if (response.data.Status === 'Sucesso') {
             navigate('/');
           } else {
             alert('Erro');
